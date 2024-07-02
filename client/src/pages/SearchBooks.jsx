@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
-
 import Auth from "../utils/auth";
 import { searchGoogleBooks } from "../utils/API";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
@@ -47,6 +46,7 @@ const SearchBooks = () => {
         title: book.volumeInfo.title,
         description: book.volumeInfo.description,
         image: book.volumeInfo.imageLinks?.thumbnail || "",
+        link: "https://books.google.com/books/about/?id=" + book.id,
       }));
 
       setSearchedBooks(bookData);
@@ -71,8 +71,10 @@ const SearchBooks = () => {
         variables: {
           ...bookToSave,
           description: bookToSave.description || "no description!",
+          link: "https://books.google.com/books/about/?id=" + bookToSave.bookId,
         },
       });
+      console.log(data);
 
       if (!data) {
         throw new Error("something went wrong!");
@@ -131,7 +133,15 @@ const SearchBooks = () => {
                     />
                   ) : null}
                   <Card.Body>
-                    <Card.Title>{book.title}</Card.Title>
+                    <Card.Title>
+                      <a
+                        href={book.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {book.title}
+                      </a>
+                    </Card.Title>
                     <p className="small">Authors: {book.authors}</p>
                     <Card.Text>{book.description || ""}</Card.Text>
                     {Auth.loggedIn() && (

@@ -48,7 +48,6 @@ const resolvers = {
           { $addToSet: { savedBooks: { ...args } } },
           { new: true, runValidators: true }
         );
-        console.log(updatedUser);
         return updatedUser;
       }
       throw AuthenticationError;
