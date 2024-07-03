@@ -42,9 +42,9 @@ The application was built/deployed using Render.
 
 ## Installation
 
-Visit the GitHub repo here: https://github.com/danrcross/mern-sleuth
+Visit the GitHub repo here: [REPO](https://github.com/danrcross/mern-sleuth)
 
-Visit the deployed site here: https://mern-sleuth.onrender.com/
+Visit the deployed site here: [SITE](https://mern-sleuth.onrender.com/)
 
 ## Usage
 
